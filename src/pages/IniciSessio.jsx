@@ -1,61 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function IniciSessio() {
   return (
-    <div>
-      <header>
-        <nav className="navbar navbar-light bg-light">
-          <div className="container-fluid">
-            <a className="navbar-brand">Gestión de incidencias FPLLEFIA</a>
-            <div>
-              <Link to="/" className="btn btn-secondary ms-2">
-                PANEL
-              </Link>
-              <Link to="/inici-sessio" className="btn btn-secondary ms-2">
-                LOGIN
-              </Link>
-              <Link to="/registre" className="btn btn-secondary ms-2">
-                REGISTRO
-              </Link>
-            </div>
-            <div>
-              <span>administrador@fpllefia.com</span>
-            </div>
-          </div>
-        </nav>
-      </header>
+    <div className="container mt-5">
+      <h1 className="w-100 text-center">Login</h1>
+      <form
+        className="form p-4 border shadow bordered mt-5 mx-auto"
+        style={{ width: "400px" }}
+      >
+        <label htmlFor="email" className="mt-2 form-label">
+          User:
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="usuario@mail.com"
+        />
 
-      <main className="container mt-5">
-        <div className="pt-5">
-          <h1 className="w-100 text-center">Login</h1>
-          <form
-            className="form p-4 border shadow bordered mt-5 mx-auto"
-            style={{ width: "400px" }}
-          >
-            <label htmlFor="email" className="mt-2 form-label">
-              User:{" "}
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="usuario@mail.com"
-            />
+        <label htmlFor="pass" className="mt-2 form-label">
+          Contraseña:
+        </label>
+        <input type="password" className="form-control" />
 
-            <label htmlFor="pass" className="mt-2 form-label">
-              Contraseña:{" "}
-            </label>
-            <input type="password" className="form-control" />
-
-            <input
-              type="submit"
-              className="mt-4 w-100 btn btn-primary"
-              value="Entrar"
-              id="enviar"
-            />
-          </form>
-        </div>
-      </main>
+        <input
+          type="submit"
+          className="mt-4 w-100 btn btn-primary"
+          value="Entrar"
+          id="enviar"
+        />
+      </form>
 
       {/* Modal */}
       <div
@@ -109,10 +82,10 @@ export default function IniciSessio() {
         </div>
       </div>
 
-      {/* Comprobación del Modal funcional */}
+      {/* Botón para abrir el modal */}
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary mt-4"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >

@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Panell from "./pages/Panell";
-import "./App.css";
 import IniciSessio from "./pages/IniciSessio";
+import Registre from "./pages/Registre";
+import Header from "./components/Header";
+import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<h2>Página de inicio</h2>} />
-      <Route path="/inici-sessio" element={<IniciSessio />} />
-      <Route path="/registre" element={<h2>Página de Registro</h2>} />
-    </Routes>
+    <div>
+      <Header /> {/* El Header estará presente en todas las rutas */}
+      <Routes>
+        <Route path="/" element={<Panell />} />
+        <Route path="/inici-sessio" element={<IniciSessio />} />
+        <Route path="/registre" element={<Registre />} />
+      </Routes>
+    </div>
   );
 }
 
