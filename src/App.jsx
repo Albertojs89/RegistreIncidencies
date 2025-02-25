@@ -5,6 +5,21 @@ import Registre from "./pages/Registre";
 import Header from "./components/Header";
 import "./App.css";
 
+
+// inicializamos el localStorage con los arrays vacíos en caso de que no existan
+function initLocalStorage() {
+  if (!localStorage.getItem("dades_tiquets")) {
+    localStorage.setItem("dades_tiquets", JSON.stringify([]));
+  }
+  if (!localStorage.getItem("dades_usuaris")) {
+    localStorage.setItem("dades_usuaris", JSON.stringify([]));
+  }
+}
+
+// llamada a la funcion
+initLocalStorage();
+
+
 function App() {
   return (
     <div>
