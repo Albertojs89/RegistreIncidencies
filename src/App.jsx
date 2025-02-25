@@ -7,6 +7,19 @@ import "./App.css";
 
 
 // inicializamos el localStorage con los arrays vacíos en caso de que no existan
+
+/*Explicación con ejemplo de que hacemos exactamente con esta inicialización
+ Ejemplo práctico
+📌 Supongamos este escenario:
+
+Abres la aplicación por primera vez → localStorage está vacío.
+Resultado: Se crea la clave "dades_tiquets" con [] (array vacío).
+Luego, agregas tickets manualmente o con código.
+Cierras y vuelves a abrir la aplicación.
+Resultado: Como "dades_tiquets" ya existe, no se sobrescribe y mantiene los tickets.
+
+
+*/
 function initLocalStorage() {
   if (!localStorage.getItem("dades_tiquets")) {
     localStorage.setItem("dades_tiquets", JSON.stringify([]));
@@ -20,6 +33,8 @@ function initLocalStorage() {
 initLocalStorage();
 
 
+
+// App.js    <  ----------------------------------------------------------------------------------
 function App() {
   return (
     <div>

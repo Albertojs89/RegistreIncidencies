@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from "react";
 
+
+
+/*Explicacion flujo de codigo:
+ Creamos un estado (tiquets) inicializado como un array vacío ([]).
+Este estado almacenará los tickets pendientes que obtendremos de localStorage.
+
+useEffect se activa automaticamente cuando el componente se monta (cuando se carga en pantalla)
+
+
+
+
+*/
+
+
+
+
+
 export default function TiquetsPendents() {
   const [tiquets, setTiquets] = useState([]);
 
