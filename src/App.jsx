@@ -21,22 +21,45 @@ Resultado: Como "dades_tiquets" ya existe, no se sobrescribe y mantiene los tick
 
 
 */
+
 function initLocalStorage() {
+  console.log("Ejecutando initLocalStorage...");
+
   if (!localStorage.getItem("dades_tiquets")) {
-    localStorage.setItem("dades_tiquets", JSON.stringify([]));
+    console.log("No existen dades_tiquets. Inicializando...");
+
+    const tiquetsEjemplo = [
+      { id: 1, codigo: "001", fecha: "2024-03-04", aula: "A1", grupo: "DAW2", ordenador: "PC1", descripcion: "Pantalla azul", alumno: "Juan Pérez", resolt: false },
+      { id: 2, codigo: "002", fecha: "2024-03-05", aula: "A2", grupo: "DAW2", ordenador: "PC2", descripcion: "No enciende", alumno: "María López", resolt: false },
+      { id: 3, codigo: "003", fecha: "2024-03-06", aula: "A3", grupo: "DAW2", ordenador: "PC3", descripcion: "Teclado roto", alumno: "Carlos Ruiz", resolt: false },
+      { id: 4, codigo: "004", fecha: "2024-03-07", aula: "A4", grupo: "DAW2", ordenador: "PC4", descripcion: "Ratón no funciona", alumno: "Laura Gómez", resolt: false },
+      { id: 5, codigo: "005", fecha: "2024-03-08", aula: "A1", grupo: "DAW2", ordenador: "PC5", descripcion: "Error en software", alumno: "Ana Fernández", resolt: true },
+      { id: 6, codigo: "006", fecha: "2024-03-09", aula: "A2", grupo: "DAW2", ordenador: "PC6", descripcion: "Internet lento", alumno: "Pedro Sánchez", resolt: true },
+      { id: 7, codigo: "007", fecha: "2024-03-10", aula: "A3", grupo: "DAW2", ordenador: "PC7", descripcion: "No arranca Windows", alumno: "Marta Díaz", resolt: true }
+    ];
+    
+    localStorage.setItem("dades_tiquets", JSON.stringify(tiquetsEjemplo));
+    console.log("Tiquets iniciales agregados a localStorage:", tiquetsEjemplo);
+  } else {
+    console.log("dades_tiquets ya existe. No se sobrescriben datos.");
   }
+
   if (!localStorage.getItem("dades_usuaris")) {
+    console.log("No existen dades_usuaris. Inicializando...");
     localStorage.setItem("dades_usuaris", JSON.stringify([]));
   }
 }
 
-// llamada a la funcion
+// Llamada a la función para inicializar datos en localStorage
 initLocalStorage();
+
+
 
 
 
 // App.js    <  ----------------------------------------------------------------------------------
 function App() {
+  
   return (
     <div>
       <Header /> {/* El Header estará presente en todas las rutas */}
