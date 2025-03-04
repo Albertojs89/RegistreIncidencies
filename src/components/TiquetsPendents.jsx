@@ -19,6 +19,8 @@ useEffect se activa automaticamente cuando el componente se monta (cuando se car
 
 export default function TiquetsPendents() {
   const [tiquets, setTiquets] = useState([]);
+  
+
 
   useEffect(() => {
     const dadesTiquets = JSON.parse(localStorage.getItem("dades_tiquets")) || [];
@@ -45,7 +47,7 @@ export default function TiquetsPendents() {
         <tbody>
           {tiquets.length > 0 ? (
             tiquets.map((tiquet) => (
-              <tr key={tiquet.codigo}>
+              <tr key={tiquet.id}>
                 <td>{tiquet.codigo}</td>
                 <td>{tiquet.fecha}</td>
                 <td>{tiquet.aula}</td>

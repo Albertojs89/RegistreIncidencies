@@ -10,6 +10,7 @@ import "./App.css";
 
 /*Explicación con ejemplo de que hacemos exactamente con esta inicialización
  Ejemplo práctico
+ 
 📌 Supongamos este escenario:
 
 Abres la aplicación por primera vez → localStorage está vacío.
