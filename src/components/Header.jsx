@@ -1,7 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function Header() {
+  const [usuariLoguejat, setUsuariLoguejat] = useState(null);
+   const navigate = useNavigate();
+
+
+   //con set interval comprobamos cada segundo el localstorage para cargar el componente y no tener que utilizar F5
+   useEffect(() => {
+    const interval = setInterval(() => {
+      const usuari = JSON.parse(localStorage.getItem("usuari_sessio"));
+      setUsuariLoguejat(usuari);
+    }, 1000); // Comprobamos cada 1 segundo
+
+    return () => clearInterval(interval); // limpiamos cuando se desmonta
+  }, []);
+
+
+  function handleLogout() {
+    localStorage.removeItem("usuari_sessio");
+    setUsuariLoguejat(null);
+    navigate("/"); // Redirigir al panel o donde prefieras
+  }
+
+
   return (
     <header>
       <nav className="navbar navbar-light bg-light">
@@ -19,8 +42,19 @@ export default function Header() {
             </Link>
           </div>
           <div>
-            <span>administrador@fpllefia.com</span>
-          </div>
+          {usuariLoguejat ? (
+            <>
+              <span>{usuariLoguejat.email}</span>
+              <button className="btn btn-outline-danger btn-sm ms-2" onClick={handleLogout}>
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <span>No hay sesión iniciada</span>
+          )}
+        </div>
+
+          
         </div>
       </nav>
     </header>

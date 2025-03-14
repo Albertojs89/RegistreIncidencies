@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function IniciSessio() {
+
+  function handleLogin(e) {
+  e.preventDefault(); //  esto evita que el formulario recargue la página
+  console.log("Usuario",email);
+
+  //cogemos la array de dades usuaris y la guardamos en usuaris 
+  const usuaris = JSON.parse(localStorage.getItem("dades_usuaris")) || [];
+
+  // Buscamos si hay un usuario registrado con ese correo y contraseña
+  const usuariTrobat = usuaris.find(
+    (usuari) => usuari.email === email && usuari.password === password
+  );
+
+  if (usuariTrobat) {
+    localStorage.setItem("usuari_sessio", JSON.stringify(usuariTrobat));
+    alert("Inicio de sesión correcto");
+    navigate("/"); // Te lleva al Panel y carga el componente
+
+    // Aquí más adelante podríamos redirigir al panel
+  } else {
+    alert("Usuario o contraseña incorrectos");
+  }
+
+  console.log("Contraseña",password);
+}
+
+//estados para el usuario y email ----------------
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+
   return (
     <div className="container mt-5">
       <h1 className="w-100 text-center">Login</h1>
       <form
+        onSubmit={handleLogin}
         className="form p-4 border shadow bordered mt-5 mx-auto"
         style={{ width: "400px" }}
       >
@@ -15,12 +51,18 @@ export default function IniciSessio() {
           type="text"
           className="form-control"
           placeholder="usuario@mail.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <label htmlFor="pass" className="mt-2 form-label">
           Contraseña:
         </label>
-        <input type="password" className="form-control" />
+        <input type="password" 
+        className="form-control"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
 
         <input
           type="submit"
