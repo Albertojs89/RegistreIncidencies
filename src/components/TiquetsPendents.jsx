@@ -30,7 +30,9 @@ export default function TiquetsPendents() {
   }, []);
 
 
-  //funciones manejadores de Eliminar y Resolver --------------------
+  //funciones manejadores de Eliminar y Resolver ------------------------------------------------
+
+
   // Función para eliminar un tiquet
     function handleEliminarTiquet(id) {
   // Obtener todos los tiquets
