@@ -86,7 +86,7 @@ export default function TiquetsPendents() {
           {missatge}
         </div>
       )}
-
+{/* “Si missatge tiene algún valor (no es null, undefined o cadena vacía), entonces muestra este <div> con el contenido del mensaje dentro”. */}
       <h2 className="mt-5">Tickets pendientes</h2>
       <table className="table mt-4">
         <thead>
@@ -116,7 +116,9 @@ export default function TiquetsPendents() {
                   <button className="btn btn-success"onClick={() => handleResoldre(tiquet.id)}>Resolver</button>
 
                   <button className="btn btn-danger ms-2" onClick={() => handleEliminarTiquet(tiquet.id)}>Eliminar</button>
-
+                  <button className="btn btn-info" title="Ver comentarios"><i class="bi bi-chat-left-text"></i></button>
+                  <button class="btn btn-warning" title="Añadir comentario"><i class="bi  bi-pencil" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+          </button>
                 </td>
               </tr>
             ))
