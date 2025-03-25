@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Comentaris from "./Comentaris";
 
 
 
@@ -20,6 +21,7 @@ useEffect se activa automaticamente cuando el componente se monta (cuando se car
 export default function TiquetsPendents() {
   const [tiquets, setTiquets] = useState([]);
   const [missatge, setMissatge] = useState("");
+  const [tiquetSeleccionat, setTiquetSeleccionat] = useState(null);
 
 
 
@@ -29,7 +31,7 @@ export default function TiquetsPendents() {
     setTiquets(tiquetsPendents);
   }, []);
 
-
+  
   //funciones manejadores de Eliminar y Resolver ------------------------------------------------
 
 
@@ -66,6 +68,10 @@ export default function TiquetsPendents() {
       return tiquet;
     });
 
+ 
+
+
+
     // 3. Guardamos el array actualizado en localStorage
     localStorage.setItem("dades_tiquets", JSON.stringify(tiquetsActualitzats));
 
@@ -77,6 +83,9 @@ export default function TiquetsPendents() {
     setTimeout(() => setMissatge(""), 3000);
 
   }
+function tancarModalComentaris() {
+  setTiquetSeleccionat(null);
+}
 
 
   return (
@@ -86,7 +95,7 @@ export default function TiquetsPendents() {
           {missatge}
         </div>
       )}
-
+{/* “Si missatge tiene algún valor (no es null, undefined o cadena vacía), entonces muestra este <div> con el contenido del mensaje dentro”. */}
       <h2 className="mt-5">Tickets pendientes</h2>
       <table className="table mt-4">
         <thead>
@@ -116,6 +125,20 @@ export default function TiquetsPendents() {
                   <button className="btn btn-success"onClick={() => handleResoldre(tiquet.id)}>Resolver</button>
 
                   <button className="btn btn-danger ms-2" onClick={() => handleEliminarTiquet(tiquet.id)}>Eliminar</button>
+                 <button
+                    className="btn btn-info"
+                    title="Ver comentarios"
+                    onClick={() => setTiquetSeleccionat(tiquet)}
+                  >
+                    <i className="bi bi-chat-left-text"></i>
+                  </button>
+                <button
+                  className="btn btn-warning ms-2"
+                  title="Añadir comentario"
+                  onClick={() => setTiquetSeleccionat(tiquet)}
+                >
+                  <i className="bi bi-pencil"></i>
+                </button>
 
                 </td>
               </tr>
@@ -127,6 +150,10 @@ export default function TiquetsPendents() {
           )}
         </tbody>
       </table>
+      {tiquetSeleccionat && (
+  <Comentaris tiquet={tiquetSeleccionat} onTancar={tancarModalComentaris} />
+)}
+
     </div>
   );
 }
