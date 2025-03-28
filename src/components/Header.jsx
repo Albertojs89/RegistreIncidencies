@@ -44,6 +44,11 @@ export default function Header() {
           <div>
           {usuariLoguejat ? (
             <>
+              {/* comprobar, si usuari.rol es admin muestra un boton que dirije a route AdminUsuaris.jsx */}
+              
+              <button className="btn btn-primary ms-2">
+                {usuariLoguejat.rol === "admin"? "Gestionar incidencias" : null}
+              </button>
               <span>{usuariLoguejat.email}</span>
               <button className="btn btn-outline-danger btn-sm ms-2" onClick={handleLogout}>
                 Cerrar sesión
