@@ -5,7 +5,7 @@ import Registre from "./pages/Registre";
 import Header from "./components/Header";
 import "./App.css";
 import NouTiquet from "./pages/NouTiquet";
-import AdminUsuaris from "./pages/adminUsuaris";
+import AdminUsuaris from "./pages/AdminUsuaris";
 import RutaProtegidaAdmin from "./components/RutaProtegida";
 
 
