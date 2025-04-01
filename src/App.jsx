@@ -5,6 +5,9 @@ import Registre from "./pages/Registre";
 import Header from "./components/Header";
 import "./App.css";
 import NouTiquet from "./pages/NouTiquet";
+import AdminUsuaris from "./pages/adminUsuaris";
+import RutaProtegidaAdmin from "./components/RutaProtegida";
+
 
 
 // inicializamos el localStorage con los arrays vacíos en caso de que no existan
@@ -69,6 +72,12 @@ function App() {
         <Route path="/inici-sessio" element={<IniciSessio />} />
         <Route path="/registre" element={<Registre />} />
         <Route path="/nou-tiquet" element={<NouTiquet />} />
+        <Route path="/admin-usuaris" element={
+          <RutaProtegidaAdmin>
+            <AdminUsuaris />
+          </RutaProtegidaAdmin>
+        } />
+        
 
       </Routes>
     </div>
