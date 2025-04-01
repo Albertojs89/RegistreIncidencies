@@ -41,7 +41,7 @@ function initLocalStorage() {
       { id: 6, codigo: "006", fecha: "2024-03-09", aula: "A2", grupo: "DAW2", ordenador: "PC6", descripcion: "Internet lento", alumno: "Pedro Sánchez", resolt: true },
       { id: 7, codigo: "007", fecha: "2024-03-10", aula: "A3", grupo: "DAW2", ordenador: "PC7", descripcion: "No arranca Windows", alumno: "Marta Díaz", resolt: true }
     ];
-    
+
     localStorage.setItem("dades_tiquets", JSON.stringify(tiquetsEjemplo));
     console.log("Tiquets iniciales agregados a localStorage:", tiquetsEjemplo);
   } else {
@@ -50,9 +50,21 @@ function initLocalStorage() {
 
   if (!localStorage.getItem("dades_usuaris")) {
     console.log("No existen dades_usuaris. Inicializando...");
-    localStorage.setItem("dades_usuaris", JSON.stringify([]));
+
+    const usuarisExemple = [
+      {
+        id: 1,
+        email: "admin@fpllefia.com",
+        password: "1234",
+        rol: "admin"
+      }
+    ];
+
+    localStorage.setItem("dades_usuaris", JSON.stringify(usuarisExemple));
+    console.log("Usuario admin creado por defecto:", usuarisExemple);
   }
 }
+
 
 // Llamada a la función para inicializar datos en localStorage
 initLocalStorage();
