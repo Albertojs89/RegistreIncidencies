@@ -21,7 +21,7 @@ export default function Header() {
   function handleLogout() {
     localStorage.removeItem("usuari_sessio");
     setUsuariLoguejat(null);
-    navigate("/"); // Redirigir al panel o donde prefieras
+    navigate("/"); // Redirigir al panel
   }
 
 
@@ -46,9 +46,11 @@ export default function Header() {
             <>
               {/* comprobar, si usuari.rol es admin muestra un boton que dirije a route AdminUsuaris.jsx */}
               
-              <button className="btn btn-primary ms-2">
-                {usuariLoguejat.rol === "admin"? "Gestionar incidencias" : null}
-              </button>
+              {usuariLoguejat.rol === "admin" && (
+                <Link to="/admin-usuaris" className="btn btn-primary ms-2 text-white text-decoration-none">
+                  Gestionar incidencias
+                </Link>
+              )}
               <span>{usuariLoguejat.email}</span>
               <button className="btn btn-outline-danger btn-sm ms-2" onClick={handleLogout}>
                 Cerrar sesión
